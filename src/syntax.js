@@ -132,7 +132,10 @@ function isCode(msg) {
     return confidence;
 }
 
+// Create a fullscreen instance of the code viewer
 function goFullscreen(msg){
+    
+    // Find out what language the code is. highlight.js stores the language as the third class
     let language = msg.classList[3];
 
     let node = document.createElement("div");
@@ -141,6 +144,8 @@ function goFullscreen(msg){
     let bg = document.createElement("div");
     bg.classList.add("bhjs-fullscreen");
     bg.style.background = "rgba(0,0,0,0.6)";
+    
+    // Close fullscreen when background is clicked
     bg.addEventListener('click', function(){
         document.getElementsByClassName("bhjs-fullscreen")[0].remove();
     });
@@ -195,6 +200,7 @@ function UppercaseFirst(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// Load fonts
 WebFont.load({
     google: {
         families: ["Source Code Pro"]
@@ -202,51 +208,7 @@ WebFont.load({
 });
 
 console.log("[Bongo-Highlight] syntax.js loaded");
+
+// Look for messages to syntax highlight every second.
+// TODO: Look for an event handler to hook instead
 setInterval(highlight, 1000);
-
-
-// EXTRA UTILS 
-
-// Volume Slider
-setTimeout(function () {
-    // Add Volume Slider
-    let leftTaskbar = document.getElementsByClassName("left--Z1rLKlO")[0];
-    let VolumeContainer = document.createElement("div");
-    VolumeContainer.id = "v-container";
-    VolumeContainer.classList.add("container--1hUthh");
-
-    let VolumeSpan = document.createElement("span");
-    VolumeSpan.style.margin = "auto";
-    VolumeSpan.style.color = "white";
-    VolumeSpan.innerText = "Volume";
-
-    let VolumeIndictator = document.createElement("span");
-    VolumeIndictator.style.margin = "auto";
-    VolumeIndictator.style.color = "white";
-    VolumeIndictator.innerText = "100%";
-
-    let VolumeSlider = document.createElement("input");
-    VolumeSlider.type = "range";
-    VolumeSlider.min = "0";
-    VolumeSlider.max = "1";
-    VolumeSlider.value = "1";
-    VolumeSlider.step = "0.01";
-    VolumeSlider.addEventListener("input", function() {
-        document.getElementsByTagName("audio")[0].volume = VolumeSlider.value;
-        let dispString = (VolumeSlider.value * 100) + "%";
-        if(dispString.includes(".")){
-            VolumeIndictator.innerText = dispString.split('.')[0]; 
-        }else{
-            VolumeIndictator.innerText = dispString;
-        }
-    });
-
-
-    VolumeContainer.appendChild(VolumeSpan);
-    VolumeContainer.appendChild(VolumeSlider);
-    VolumeContainer.appendChild(VolumeIndictator);
-    if(leftTaskbar != undefined)
-        leftTaskbar.appendChild(VolumeContainer);
-}, 2000);
-
-// ADD JSZip to preview ZIP Files maybe?
