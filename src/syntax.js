@@ -81,6 +81,7 @@ function highlight() {
     }
 }
 
+// Generate ID for code messages
 function makeid(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -125,7 +126,9 @@ function isCode(msg) {
 
     
     for(i = 0; i < keywords.length; i++){
+        // val is equal to the number of times keywords[i] shows up in the message
         let val = msg.innerText.match(new RegExp(keywords[i], "g") || []);
+
         if(val != null)
             confidence += val.length;
     }
@@ -152,6 +155,7 @@ function goFullscreen(msg){
 
     node.appendChild(bg);
 
+    // Create the window
     let window = document.createElement("div");
     window.classList.add("bhjs-code-window")
     let code = document.createElement("pre");
@@ -169,7 +173,10 @@ function goFullscreen(msg){
     window.append(code);
     hljs.highlightBlock(code);
 
+    // Find Message Author
     let author = msg.parentElement.parentElement.children[0].children[0].innerText;
+    
+    // Find Message Timestamp
     let time = msg.parentElement.parentElement.children[0].children[1].innerText;
 
     let subscriptAuthor = document.createElement("h2");
