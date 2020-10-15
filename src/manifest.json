@@ -1,0 +1,20 @@
+{
+    "name": "Bongo Highlight",
+    "version": "0.1.2",
+    "description": "Code Syntax Highlighting in Bongo Chatrooms",
+    "manifest_version": 2,
+    "permissions": ["https://*.youseeu.com/*", "http://*.youseeu.com/*", "https://turing.dombi.ca/testing.html"],
+    "content_scripts": [
+        {
+            "matches": ["http://*.youseeu.com/*", "https://*.youseeu.com/*", "https://turing.dombi.ca/testing.html"],
+            "js": ["webfont.js","highlight.pack.js", "syntax.js"],
+            "css": [
+                "styles/bh.css",
+                "styles/atom-one-dark.css"
+            ]
+        }
+    ],
+    "icons": {
+        "128": "icon128.png"
+    }
+}
