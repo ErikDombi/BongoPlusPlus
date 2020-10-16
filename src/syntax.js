@@ -1,17 +1,33 @@
 hljs.initHighlightingOnLoad();
 
 function highlight() {
+    let autoConfidenceValue = 20;
+    let manualConfidenceValue = 8;
+
+    chrome.storage.sync.get(['autoConfidence', 'manualConfidence'], function (obj) {
+        if(obj.autoConfidence == undefined) {
+            obj.autoConfidence = 20;
+        }
+
+        if(obj.manualConfidence == undefined){
+            obj.manualConfidence = 8;
+        }
+
+        autoConfidenceValue = obj.autoConfidence;
+        manualConfidenceValue = obj.manualConfidence;
+    });
+
     // Get a list of all bongo message objects
-    var msgs = document.getElementsByClassName("message--Z2rQ6JB");
+    let msgs = document.getElementsByClassName("message--Z2rQ6JB");
 
     // Iterate all bongo messages
     for(j = 0; j < msgs.length; j++){
-        var msg = msgs[j];
+        let msg = msgs[j];
         if(msg != undefined){
             // Only try to highlight objects we haven't iterated over yet
             if(!msg.classList.contains("bhjs-checked") || msg.classList.contains("bhjs-force")){
                 let confidence = isCode(msg);
-                if(confidence > 20 || msg.classList.contains("bhjs-force")){
+                if(confidence >= autoConfidenceValue || msg.classList.contains("bhjs-force")){
                     if(msg.classList.contains("bhjs-force"))
                         msg.classList.remove("bhjs-force");
                         
@@ -46,6 +62,19 @@ function highlight() {
                         msgobj.classList.remove("bhjs-code");
                         msgobj.classList.remove("hljs");
 
+                        let msgHeader = msg.parentElement.parentElement.children[0];
+
+                        let forceFormatBtn = document.createElement("span");
+                        forceFormatBtn.addEventListener('click', function() {
+                            msg.classList.add("bhjs-force");
+                            forceFormatBtn.remove();
+                            highlight();
+                        });
+                        forceFormatBtn.classList.add("bhjs-force-highlight");
+                        forceFormatBtn.innerText = "Highlight"
+
+                    msgHeader.appendChild(forceFormatBtn);
+
                         // Set element's state to old state
                         msgobj.innerHTML = oldmsgobj.innerHTML;
 
@@ -70,8 +99,20 @@ function highlight() {
 
                     // Append the hidden pre-highlight state node to the user's message
                     msg.appendChild(prenode);
-                }else if(confidence > 8){
+                }else if(confidence >= manualConfidenceValue){
                     // Message might be code. Don't auto format it, but suggest the option
+                    let msgHeader = msg.parentElement.parentElement.children[0];
+
+                    let forceFormatBtn = document.createElement("span");
+                    forceFormatBtn.addEventListener('click', function() {
+                        msg.classList.add("bhjs-force");
+                        forceFormatBtn.remove();
+                        highlight();
+                    });
+                    forceFormatBtn.classList.add("bhjs-force-highlight");
+                    forceFormatBtn.innerText = "Highlight"
+
+                    msgHeader.appendChild(forceFormatBtn);
                 }
             }
 
@@ -83,10 +124,10 @@ function highlight() {
 
 // Generate ID for code messages
 function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    let result           = '';
+    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
