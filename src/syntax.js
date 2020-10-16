@@ -1,22 +1,6 @@
 hljs.initHighlightingOnLoad();
 
 function highlight() {
-    let autoConfidenceValue = 20;
-    let manualConfidenceValue = 8;
-
-    chrome.storage.sync.get(['autoConfidence', 'manualConfidence'], function (obj) {
-        if(obj.autoConfidence == undefined) {
-            obj.autoConfidence = 20;
-        }
-
-        if(obj.manualConfidence == undefined){
-            obj.manualConfidence = 8;
-        }
-
-        autoConfidenceValue = obj.autoConfidence;
-        manualConfidenceValue = obj.manualConfidence;
-    });
-
     // Get a list of all bongo message objects
     let msgs = document.getElementsByClassName("message--Z2rQ6JB");
 
@@ -229,6 +213,10 @@ function goFullscreen(msg){
     let subscriptLanguage = document.createElement("span");
     subscriptLanguage.innerText = " : " + UppercaseFirst(language);
 
+    let subscriptConfidence = document.createElement("span");
+    subscriptConfidence.innerText = "Confidence: " + isCode(msg);
+    subscriptConfidence.style.display = "block";
+
     let windowSubscript = document.createElement("div");
 
     windowSubscript.classList.add("bhjs-fs-window-sub")
@@ -236,6 +224,7 @@ function goFullscreen(msg){
     windowSubscript.appendChild(subscriptAuthor);
     windowSubscript.appendChild(subscriptTime);
     windowSubscript.appendChild(subscriptLanguage);
+    windowSubscript.appendChild(subscriptConfidence);
 
     window.append(windowSubscript);
 
@@ -255,8 +244,25 @@ WebFont.load({
     }
 });
 
-console.log("[Bongo-Highlight] syntax.js loaded");
+console.log("[Bongo++] syntax.js loaded");
 
-// Look for messages to syntax highlight every second.
-// TODO: Look for an event handler to hook instead
-setInterval(highlight, 1000);
+let autoConfidenceValue = 20;
+let manualConfidenceValue = 8;
+
+chrome.storage.sync.get(['autoConfidence', 'manualConfidence'], function (obj) {
+    if(obj.autoConfidence == undefined) {
+         obj.autoConfidence = 20;
+    }
+
+    if(obj.manualConfidence == undefined){
+        obj.manualConfidence = 8;
+    }
+
+    console.log("[Bongo++] Loaded With The Following Settings")
+    console.log(obj);
+
+    autoConfidenceValue = obj.autoConfidence;
+    manualConfidenceValue = obj.manualConfidence;
+
+    setInterval(highlight, 1000);
+});
