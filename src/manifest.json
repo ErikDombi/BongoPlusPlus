@@ -13,7 +13,7 @@
             "js": ["webfont.js","highlight.pack.js", "syntax.js", "volume.js", "ZIPExplorer.js"],
             "css": [
                 "styles/bh.css",
-                "styles/atom-one-dark.css"
+                "styles/nord.css"
             ]
         }
     ],
