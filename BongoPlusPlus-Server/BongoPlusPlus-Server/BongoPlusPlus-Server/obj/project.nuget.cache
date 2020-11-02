@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BZ1SOMxnLeSMFrk/EALd+tLkNZoFcXvz19+ymHZRGic4A1bxNr5k9KrBK0VL2qy9BUGmbOWpDWo/uOWFvvu8ow==",
+  "success": true,
+  "projectFilePath": "D:\\BongoPlusPlus\\BongoPlusPlus-Server\\BongoPlusPlus-Server\\BongoPlusPlus-Server\\BongoPlusPlus-Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
