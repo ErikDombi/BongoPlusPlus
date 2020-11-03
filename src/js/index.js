@@ -2,6 +2,7 @@ import { EmoteFetcher, EmoteParser } from 'twitch-emoticons';
 import hljs from 'highlight.js/lib/core'
 import WebFont from 'webfontloader'
 import {Promise} from "bluebird";
+import {bppclient} from './bppclient.js';
 
 Promise.longStackTraces();
 
@@ -90,6 +91,29 @@ function highlight(){
     for(let j = 0; j < msgs.length; j++){
         let msg = msgs[j];
         if(msg != undefined){
+
+            let msgOwner = msg.parentElement.parentElement.children[0].children[0];
+
+            if(!msgOwner.classList.contains("bpp-checked")){
+                for(let i = 0; i < client._room.Users.length; i++){
+                    var usr = client._room.Users[i];
+
+                    if(usr.Name == msgOwner.innerText){
+                        let badge = document.createElement("span");
+                        badge.innerText = "Bongo++"
+                        badge.style.background = "#FF0000";
+                        badge.style.padding = "4px";
+                        badge.style.borderRadius = "3px";
+                        badge.style.color = "white";
+                        badge.style.fontSize = "7px";
+                        
+                        msgOwner.parentElement.appendChild(badge);
+
+                        msgOwner.classList.add("bpp-checked");
+                    }
+                }
+            }
+
             // Only try to highlight objects we haven't iterated over yet
             if(!msg.classList.contains("bhjs-checked") || msg.classList.contains("bhjs-force")){
                 let confidence = isCode(msg.innerText);
@@ -310,6 +334,11 @@ let manualConfidenceValue = 8;
 
     setInterval(highlight, 1000);
 });*/
+
+let channelID = sessionStorage.getItem("BBB_meetingID");
+let userID = sessionStorage.getItem("BBB_userID");
+let userName = sessionStorage.getItem("BBB_fullname");
+let client = new bppclient(channelID, userID, userName);
 
 // Wait for Bongo Window to load
 setTimeout(function () {

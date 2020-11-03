@@ -7,6 +7,10 @@
     "start": "node utils/webserver.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "5.0.5",
     "css-loader": "3.2.0",
@@ -15,12 +19,14 @@
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "style-loader": "1.0.0",
-    "webpack": "4.41.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "3.3.10",
     "webpack-dev-server": "3.9.0",
-    "write-file-webpack-plugin": "4.5.1",
-    "webpack-cli": "3.3.10"
+    "write-file-webpack-plugin": "4.5.1"
   },
   "dependencies": {
+    "@aspnet/signalr": "^1.1.4",
+    "@microsoft/signalr": "^3.1.9",
     "bluebird": "^3.7.2",
     "highlight.js": "^10.3.2",
     "request": "^2.88.2",

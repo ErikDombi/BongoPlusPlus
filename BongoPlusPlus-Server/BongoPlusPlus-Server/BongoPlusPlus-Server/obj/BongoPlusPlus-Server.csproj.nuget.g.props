@@ -20,5 +20,6 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\Erik\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.10.9</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
+    <PkgMicrosoft_AspNet_SignalR_Utils Condition=" '$(PkgMicrosoft_AspNet_SignalR_Utils)' == '' ">C:\Users\Erik\.nuget\packages\microsoft.aspnet.signalr.utils\2.4.1</PkgMicrosoft_AspNet_SignalR_Utils>
   </PropertyGroup>
 </Project>

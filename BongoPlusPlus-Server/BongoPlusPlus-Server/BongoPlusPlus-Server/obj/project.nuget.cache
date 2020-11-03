@@ -1,10 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "BZ1SOMxnLeSMFrk/EALd+tLkNZoFcXvz19+ymHZRGic4A1bxNr5k9KrBK0VL2qy9BUGmbOWpDWo/uOWFvvu8ow==",
+  "dgSpecHash": "8ghNHRTReSTSlfE3+4CwoEmbLsAJM6nv4p2WNmFzt8iYcSn0bsnsFQYse/ZZttVEm/JZjyED6zUGICT/Ivpb/w==",
   "success": true,
   "projectFilePath": "D:\\BongoPlusPlus\\BongoPlusPlus-Server\\BongoPlusPlus-Server\\BongoPlusPlus-Server\\BongoPlusPlus-Server.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.aspnet.signalr.utils\\2.4.1\\microsoft.aspnet.signalr.utils.2.4.1.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0-rc.2.20475.5\\microsoft.extensions.dependencyinjection.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0-rc.2.20475.5\\microsoft.extensions.dependencyinjection.abstractions.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0-rc.2.20475.5\\microsoft.extensions.logging.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0-rc.2.20475.5\\microsoft.extensions.logging.abstractions.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.extensions.options\\5.0.0-rc.2.20475.5\\microsoft.extensions.options.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0-rc.2.20475.5\\microsoft.extensions.primitives.5.0.0-rc.2.20475.5.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
+    "C:\\Users\\Erik\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }

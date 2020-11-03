@@ -8,5 +8,6 @@ namespace BongoPlusPlus_Server.Models
     public class BongoRoom
     {
         public string RoomID;
+        public List<BongoUser> Users = new List<BongoUser>();
     }
 }
