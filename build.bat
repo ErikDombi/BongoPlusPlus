@@ -1,0 +1,1 @@
+RMDIR /Q/S build && yarn build && ROBOCOPY ./src/css ./build /E /XC /XN /XO

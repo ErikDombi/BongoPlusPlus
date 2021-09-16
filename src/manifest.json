@@ -1,28 +1,27 @@
 {
-    "name": "Bongo++",
-    "version": "0.1.3",
-    "description": "Extra Utilities For Bongo Chatrooms",
-    "manifest_version": 2,
-    "permissions": ["https://*.youseeu.com/*", "http://*.youseeu.com/*", "https://turing.dombi.ca/testing.html", "storage"],
-    "browser_action": {
-        "default_popup": "popup.html"
-    },
-    "content_scripts": [
-        {
-            "matches": ["http://*.youseeu.com/*", "https://*.youseeu.com/*", "https://turing.dombi.ca/testing.html"],
-            "js": ["webfont.js","highlight.pack.js", "syntax.js", "volume.js", "ZIPExplorer.js"],
-            "css": [
-                "styles/bh.css",
-                "styles/nord.css"
-            ]
-        }
-    ],
-    "icons": {
-        "128": "icon128.png"
-    },
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "bongopp@dombi.ca"
-        }
-    }
+  "name": "Bongo++",
+  "options_page": "options.html",
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": ["https://*.youseeu.com/*", "http://*.youseeu.com/*", "https://turing.dombi.ca/testing.html", "storage", "https://api.betterttv.net/*"],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon-34.png"
+  },
+  "content_scripts": [
+      {
+          "matches": ["http://*.youseeu.com/*", "https://*.youseeu.com/*", "https://turing.dombi.ca/testing.html"],
+          "js": [ "index.bundle.js" ],
+          "css": [
+              "bh.css",
+              "nord.css"
+          ]
+      }
+  ],
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
